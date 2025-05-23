@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme - Brown sugar colors */
+    --background: 30 30% 98%;
+    --foreground: 25 40% 15%;
+    --card: 30 30% 98%;
+    --card-foreground: 25 40% 15%;
+    --popover: 30 30% 98%;
+    --popover-foreground: 25 40% 15%;
+    --primary: 25 70% 40%;
+    --primary-foreground: 30 30% 98%;
+    --secondary: 20 30% 90%;
+    --secondary-foreground: 25 70% 40%;
+    --muted: 20 30% 90%;
+    --muted-foreground: 25 30% 45%;
+    --accent: 20 30% 85%;
+    --accent-foreground: 25 70% 40%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 30 30% 98%;
+    --border: 20 30% 85%;
+    --input: 20 30% 85%;
+    --ring: 25 70% 40%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme - Rich brown sugar colors with improved contrast */
+    --background: 25 30% 12%;
+    --foreground: 30 15% 95%;
+    --card: 25 30% 15%;
+    --card-foreground: 30 15% 95%;
+    --popover: 25 30% 12%;
+    --popover-foreground: 30 15% 95%;
+    --primary: 25 60% 50%;
+    --primary-foreground: 25 30% 12%;
+    --secondary: 25 30% 20%;
+    --secondary-foreground: 30 15% 95%;
+    --muted: 25 30% 20%;
+    --muted-foreground: 30 15% 85%;
+    --accent: 25 40% 25%;
+    --accent-foreground: 30 15% 95%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 30 15% 95%;
+    --border: 25 30% 25%;
+    --input: 25 30% 25%;
+    --ring: 25 60% 50%;
+  }
+}
+
+/* Force all text to use theme colors */
+.dark {
+  color-scheme: dark;
+}
+
+/* Ensure all text elements use theme colors */
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark span,
+.dark div,
+.dark a,
+.dark label,
+.dark li {
+  color: hsl(var(--foreground));
+}
+
+/* Override any black text */
+.dark [class*="text-black"] {
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Ensure buttons have visible text */
+.dark button {
+  color: hsl(var(--foreground));
+}
+
+/* Ensure primary buttons have correct text color */
+.dark .btn-primary,
+.dark button[class*="bg-primary"] {
+  color: hsl(var(--primary-foreground));
+}
+
+/* Brown sugar bubble background pattern - very subtle and lightweight */
+body {
+  background-image: radial-gradient(circle at 25px 25px, rgba(var(--primary), 0.05) 8px, transparent 8px),
+    radial-gradient(circle at 75px 75px, rgba(var(--primary), 0.05) 6px, transparent 6px),
+    radial-gradient(circle at 125px 50px, rgba(var(--primary), 0.03) 10px, transparent 10px);
+  background-size: 150px 150px;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure body takes full width but not more */
+  max-width: 100vw; /* Prevent overflow beyond viewport width */
+}
+
+/* Fix for container width */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Brown sugar bubble hover effect for cards */
+.card-hover-effect {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+}
+
+.card-hover-effect::before {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--primary), 0.2) 0%, transparent 70%);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.card-hover-effect:hover::before {
+  transform: scale(1.2);
+}
+
+/* Section dividers with brown sugar bubble motif */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+  margin: 2rem 0;
+  position: relative;
+}
+
+.section-divider::before {
+  content: "🧋";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: hsl(var(--background));
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+/* Brown sugar bubble tags */
+.boba-tag {
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.boba-tag:hover {
+  transform: scale(1.05);
+}
+
+/* Button styles */
+.btn-boba {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 999px;
+}
+
+.btn-boba::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(var(--primary), 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-boba:hover::after {
+  transform: scale(1.5);
+}
+
+/* Fix for grid layouts to prevent overflow */
+.grid {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Fix for images to prevent overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
